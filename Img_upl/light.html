@@ -1,0 +1,589 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head profile="https://gmpg.org/xfn/11"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(e){this.triggerEvents=e,this.eventOptions={passive:!0},this.userEventListener=this.triggerListener.bind(this),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){this.triggerEvents.forEach((t=>window.addEventListener(t,e.userEventListener,e.eventOptions)))}_removeUserInteractionListener(e){this.triggerEvents.forEach((t=>window.removeEventListener(t,e.userEventListener,e.eventOptions)))}triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}async _loadEverythingNow(){this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async),await this._triggerDOMContentLoaded(),await this._triggerWindowLoad(),window.dispatchEvent(new Event("rocket-allScriptsLoaded"))}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)}))}async _transformScript(e){return await this._requestAnimFrame(),new Promise((t=>{const n=document.createElement("script");let i;[...e.attributes].forEach((e=>{let t=e.nodeName;"type"!==t&&("data-rocket-type"===t&&(t="type",i=e.nodeValue),n.setAttribute(t,e.nodeValue))})),e.hasAttribute("src")&&this._isValidScriptType(i)?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t()),e.parentNode.replaceChild(n,e)}))}_isValidScriptType(e){return!e||""===e||"string"==typeof e&&["text/javascript","text/x-javascript","text/ecmascript","text/jscript","application/javascript","application/x-javascript","application/ecmascript","application/jscript","module"].includes(e.toLowerCase())}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_preloadAllScripts(){var e=document.createDocumentFragment();[...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async].forEach((t=>{const n=t.getAttribute("src");if(n){const t=document.createElement("link");t.href=n,t.rel="preload",t.as="script",e.appendChild(t)}})),document.head.appendChild(e)}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"rocket-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){let n=e[t];Object.defineProperty(e,t,{get:()=>n||function(){},set(i){e["rocket"+t]=n=i}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("rocket-DOMContentLoaded",(()=>t.bind(document)(n)))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map((e=>"load"===e||0===e.indexOf("load.")?"rocket-jquery-load":e)).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]}))}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._requestAnimFrame(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-load")),await this._requestAnimFrame(),window.rocketonload&&window.rocketonload(),await this._requestAnimFrame(),this.allJQueries.forEach((e=>e(window).trigger("rocket-jquery-load"))),window.dispatchEvent(new Event("rocket-pageshow")),await this._requestAnimFrame(),window.rocketonpageshow&&window.rocketonpageshow()}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript;n||console.error("WPRocket unable to document.write this: "+t);const i=document.createRange(),r=n.parentElement;let a=e.get(n);void 0===a&&(a=n.nextSibling,e.set(n,a));const o=document.createDocumentFragment();i.setStart(o,0),o.appendChild(i.createContextualFragment(t)),r.insertBefore(o,a)}}async _requestAnimFrame(){return new Promise((e=>requestAnimationFrame(e)))}static run(){const e=new RocketLazyLoadScripts(["keydown","mousemove","touchmove","touchstart","touchend","wheel"]);e._addUserInteractionListener(e)}}RocketLazyLoadScripts.run();
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>34+ Instagram WhatsApp DP Free Download | News Share</title>
+<meta name="distribution" content="Global" />
+<meta name="language" content="en-us" />
+<meta name="robots" content="follow,index" />
+<link rel="profile" href="https://gmpg.org/xfn/11" />
+<link data-minify="1" rel="stylesheet" type="text/css" media="all" href="https://www.newsshare.in/wp-content/cache/min/1/wp-content/themes/newswire/style.css?ver=1639289782" />
+<link rel="alternate" type="application/rss+xml" title="News Share RSS Feed" href="https://www.newsshare.in/feed" />
+<link rel="alternate" type="application/atom+xml" title="News Share Atom Feed" href="https://www.newsshare.in/feed/atom" />
+<link rel="pingback" href="https://www.newsshare.in/xmlrpc.php" />
+<link data-minify="1" rel="stylesheet" type="text/css" href="https://www.newsshare.in/wp-content/cache/min/1/wp-content/themes/newswire/colors/blue.css?ver=1639289782" />
+<link data-minify="1" rel="stylesheet" type="text/css" href="https://www.newsshare.in/wp-content/cache/min/1/wp-content/themes/newswire/css/media-queries.css?ver=1639289782" />
+<link rel="stylesheet" type="text/css" href="https://www.newsshare.in/wp-content/themes/newswire/custom.css" />
+<!--[if lt IE 9]>
+	<script src="https://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+<![endif]-->
+<meta name='robots' content='max-image-preview:large' />
+
+<meta name="description"  content="Download free best collections of Instagram WhatsApp DP, profile picture, WhatsApp profile pic, images, photos available in high-quality resolutions which you" />
+
+<meta name="keywords"  content="dp (display picture)" />
+
+<link rel="canonical" href="https://www.newsshare.in/instagram-whatsapp-dp-6226.html" />
+			<script type="rocketlazyloadscript" data-rocket-type="text/javascript" >
+				window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+				ga('create', 'UA-196746120-6', 'auto');
+				// Plugins
+				
+				ga('send', 'pageview');
+			</script>
+			<script type="rocketlazyloadscript" async src="https://www.google-analytics.com/analytics.js"></script>
+			
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link href='https://fonts.gstatic.com' crossorigin rel='preconnect' />
+<link rel="alternate" type="application/rss+xml" title="News Share &raquo; Feed" href="https://www.newsshare.in/feed" />
+<link rel="alternate" type="application/rss+xml" title="News Share &raquo; Comments Feed" href="https://www.newsshare.in/comments/feed" />
+<link rel="alternate" type="application/rss+xml" title="News Share &raquo; 34+ Instagram WhatsApp DP Free Download Comments Feed" href="https://www.newsshare.in/instagram-whatsapp-dp-6226.html/feed" />
+<meta content="/var/www/newsshare.in/httpdocs/wp-content/themes/newswire/style.css v." name="generator"/><style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link data-minify="1" rel='stylesheet' id='shortcodes-css'  href='https://www.newsshare.in/wp-content/cache/min/1/wp-content/themes/newswire/functions/shortcodes/shortcodes.css?ver=1639289782' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://www.newsshare.in/wp-includes/css/dist/block-library/style.min.css?ver=dddc28231cb7c1f3005c74e44fe7e7f0' type='text/css' media='all' />
+<link rel='stylesheet' id='googlefonts-css'  href='https://fonts.googleapis.com/css?family=Forum:400|Noto+Serif:400&#038;subset=latin&#038;display=swap' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-image-borders-styles-css'  href='https://www.newsshare.in/wp-content/plugins/wp-image-borders/wp-image-borders.css?ver=dddc28231cb7c1f3005c74e44fe7e7f0' type='text/css' media='all' />
+<style id='wp-image-borders-styles-inline-css' type='text/css'>
+
+		.wp-image-borders .alignright,
+		.wp-image-borders .alignleft,
+		.wp-image-borders .aligncenter,
+		.wp-image-borders .alignnone,
+		.wp-image-borders .size-auto,
+		.wp-image-borders .size-full,
+		.wp-image-borders .size-large,
+		.wp-image-borders .size-medium,
+		.wp-image-borders .size-thumbnail,
+		.wp-image-borders .alignright img,
+		.wp-image-borders .alignleft img,
+		.wp-image-borders .aligncenter img,
+		.wp-image-borders .alignnone img,
+		.wp-image-borders .size-auto img,
+		.wp-image-borders .size-full img,
+		.wp-image-borders .size-large img,
+		.wp-image-borders .size-medium img,
+		.wp-image-borders .size-thumbnail img {
+	   border-style: groove !important;
+	   border-width: 2px !important;
+	   border-radius: 2px !important;
+	   border-color: #ffffff !important;
+	   -moz-box-shadow: 0px 0px 0px 0px #ffffff !important;
+	   -webkit-box-shadow: 0px 0px 0px 0px #ffffff !important;
+	   box-shadow: 0px 0px 0px 0px #ffffff !important;
+   }
+</style>
+<link data-minify="1" rel='stylesheet' id='wp-pagenavi-css'  href='https://www.newsshare.in/wp-content/cache/min/1/wp-content/plugins/wp-pagenavi/pagenavi-css.css?ver=1639289782' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='metro_style_social_widget-css'  href='https://www.newsshare.in/wp-content/cache/min/1/wp-content/plugins/metro-style-social-widget/CSS/metro.css?ver=1639289782' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='rpt_front_style-css'  href='https://www.newsshare.in/wp-content/cache/min/1/wp-content/plugins/related-posts-thumbnails/assets/css/front.css?ver=1639289782' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='tablepress-default-css'  href='https://www.newsshare.in/wp-content/cache/min/1/wp-content/plugins/tablepress/css/default.min.css?ver=1639289782' type='text/css' media='all' />
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.newsshare.in/wp-content/themes/newswire/includes/js/jquery.min.js?ver=1.6.4' id='jquery-js'></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type='text/javascript' src='https://www.newsshare.in/wp-content/cache/min/1/wp-content/themes/newswire/functions/shortcodes/shortcodes.js?ver=1639289782' id='tj_shortcodes-js'></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.newsshare.in/wp-content/themes/newswire/includes/js/jquery-ui-1.8.5.custom.min.js?ver=1.8.5' id='jquery-ui-js'></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type='text/javascript' src='https://www.newsshare.in/wp-content/cache/min/1/wp-content/themes/newswire/includes/js/superfish.js?ver=1639289782' id='jquery-superfish-js'></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type='text/javascript' src='https://www.newsshare.in/wp-content/cache/min/1/wp-content/themes/newswire/includes/js/custom.js?ver=1639289782' id='jquery-custom-js'></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type='text/javascript' src='https://www.newsshare.in/wp-content/cache/min/1/wp-content/themes/newswire/includes/js/scrolltop.js?ver=1639289782' id='srolltop-js'></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type='text/javascript' src='https://www.newsshare.in/wp-content/cache/min/1/widgets.js?ver=1639289829' id='twitter-button-js'></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type='text/javascript' src='https://www.newsshare.in/wp-content/cache/min/1/js/plusone.js?ver=1639289829' id='gpone-button-js'></script>
+<link rel="https://api.w.org/" href="https://www.newsshare.in/wp-json/" /><link rel="alternate" type="application/json" href="https://www.newsshare.in/wp-json/wp/v2/posts/6226" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.newsshare.in/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.newsshare.in/wp-includes/wlwmanifest.xml" /> 
+
+<link rel='shortlink' href='https://www.newsshare.in/?p=6226' />
+<link rel="shortcut icon" href="http://newsshare.in/wp-content/uploads/2016/07/favicon.png" /><style type='text/css' media='screen'>
+	blockquote{ font-family:"Forum", arial, sans-serif;}
+	body{ font-family:"Noto Serif", arial, sans-serif;}
+	h1{ font-family:"Noto Serif", arial, sans-serif;}
+	h2{ font-family:"Noto Serif", arial, sans-serif;}
+	h3{ font-family:"Noto Serif", arial, sans-serif;}
+	h4{ font-family:"Noto Serif", arial, sans-serif;}
+	h5{ font-family:"Noto Serif", arial, sans-serif;}
+	h6{ font-family:"Noto Serif", arial, sans-serif;}
+	p{ font-family:"Noto Serif", arial, sans-serif;}
+	li{ font-family:"Noto Serif", arial, sans-serif;}
+</style>
+<!-- fonts delivered by Wordpress Google Fonts, a plugin by Adrian3.com --><link rel="shortcut icon" href="https://newsshare.in/wp-content/uploads/2016/07/favicon.png" /><!-- Custom Styling -->
+<style type="text/css">
+body { }
+
+@media screen and (max-width: 767px) {
+  #sidebar {
+    display: block;
+    float: left;
+    width: 100%;
+    margin-top: 20px;
+    padding-left: 0;
+  }
+  #sidebar .widget {
+    float: left;
+    width: 46%;
+    margin-right: 20px;
+  }
+}
+@media screen and (max-width: 479px) {
+  #sidebar .widget {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
+.wp-caption, .entry-content img, .entry-content a img  {max-width: 90%; height: auto; }
+</style>
+			<style>
+			#related_posts_thumbnails li{
+				border-right: 1px solid #DDDDDD;
+				background-color: #FFFFFF			}
+			#related_posts_thumbnails li:hover{
+				background-color: #EEEEEF;
+			}
+			.relpost_content{
+				font-size:	16px;
+				color: 		#333333;
+			}
+			.relpost-block-single{
+				background-color: #FFFFFF;
+				border-right: 1px solid  #DDDDDD;
+				border-left: 1px solid  #DDDDDD;
+				margin-right: -1px;
+			}
+			.relpost-block-single:hover{
+				background-color: #EEEEEF;
+			}
+		</style>
+
+	<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>	<script data-ad-client="ca-pub-8822717667672157" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8822717667672157",
+          enable_page_level_ads: true
+     });
+</script>
+	<script type="rocketlazyloadscript" data-rocket-type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-605c54a9f2af504a"></script>
+</head>
+<body class="post-template-default single single-post postid-6226 single-format-standard chrome">
+	<script type="rocketlazyloadscript" async data-cfasync="false">
+       const url = new URL(window.location.href);
+       const clickID = url.searchParams.get("click_id");
+       const sourceID = url.searchParams.get("source_id");
+
+       const s = document.createElement("script");
+       s.dataset.cfasync = "false";
+       s.src = "https://system-notify.app/f/sdk.js?z=415908";
+       s.onload = (opts) => {
+           opts.zoneID = 415908;
+           opts.extClickID = clickID;
+           opts.subID1 = sourceID;
+           opts.actions.onPermissionGranted = () => {};
+           opts.actions.onPermissionDenied = () => {};
+           opts.actions.onAlreadySubscribed = () => {};
+           opts.actions.onError = () => {};
+       };
+       document.head.appendChild(s);
+</script>
+<div id="wrapper">
+	<div id="primary-nav">
+	    <ul id="primary-navigation" class="nav"><li id="menu-item-22" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-22"><a href="https://newsshare.in/">Home</a></li>
+<li id="menu-item-23" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23"><a href="https://www.newsshare.in/about">About</a></li>
+<li id="menu-item-24" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24"><a href="https://www.newsshare.in/contact">Contact</a></li>
+<li id="menu-item-26" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-26"><a href="https://www.newsshare.in/privacy-policy">Privacy Policy</a>
+<ul class="sub-menu">
+	<li id="menu-item-27" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-27"><a href="https://www.newsshare.in/terms-conditions">Terms &#038; Conditions</a></li>
+</ul>
+</li>
+<li id="menu-item-25" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25"><a href="https://www.newsshare.in/copyright-policy">Copyright Policy</a></li>
+</ul>		<form method="get" id="searchform" action="https://www.newsshare.in">
+	<fieldset>
+		<input type="text" name="s" id="s" placeholder="Search" />
+	</fieldset>
+</form>
+	</div><!-- #primary-nav -->
+			
+	<div id="header">
+					<a href="https://www.newsshare.in"><img width="350" height="58" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20350%2058'%3E%3C/svg%3E" alt="News Share" id="logo" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2016/07/logo.png"/><noscript><img width="350" height="58" src="https://www.newsshare.in/wp-content/uploads/2016/07/logo.png" alt="News Share" id="logo"/></noscript></a>
+			    		<a class="button-menu" id="toggle" href="#"></a>			
+		<div class="clear"></div> 
+	</div><!-- #header-->
+
+	<div id="secondary-nav">
+		<ul id="secondary-navigation" class="nav"><li id="menu-item-30" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-30"><a href="https://www.newsshare.in/category/entertainment">Entertainment</a>
+<ul class="sub-menu">
+	<li id="menu-item-31" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-31"><a href="https://www.newsshare.in/category/entertainment/bollywood">Bollywood</a></li>
+	<li id="menu-item-32" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-32"><a href="https://www.newsshare.in/category/entertainment/hollywood">Hollywood</a></li>
+	<li id="menu-item-33" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-33"><a href="https://www.newsshare.in/category/entertainment/music">Music</a></li>
+	<li id="menu-item-34" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-34"><a href="https://www.newsshare.in/category/entertainment/television">Television</a></li>
+</ul>
+</li>
+<li id="menu-item-37" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-37"><a href="https://www.newsshare.in/category/sports">Sports</a></li>
+<li id="menu-item-38" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-38"><a href="https://www.newsshare.in/category/tech">Tech</a></li>
+<li id="menu-item-4793" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4793"><a href="https://www.newsshare.in/category/science">Science</a></li>
+<li id="menu-item-39" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-39"><a href="https://www.newsshare.in/category/world">World</a></li>
+<li id="menu-item-145" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-145"><a href="https://www.newsshare.in/category/health">Health</a></li>
+<li id="menu-item-3015" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3015"><a href="https://www.newsshare.in/category/fashion">Fashion</a></li>
+<li id="menu-item-15599" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-15599"><a href="https://www.newsshare.in/category/guide-information">Guide</a></li>
+<li id="menu-item-10415" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10415"><a href="https://www.newsshare.in/category/color-psychology">Color Psychology</a></li>
+</ul>	</div><!-- #secondary-nav -->
+
+	<div id="main">
+        
+        <div id="content">
+        
+<div id="breadcrumbs"><a href="/">Home</a> <a href="https://www.newsshare.in/category/dp-display-picture" rel="category tag">DP (Display Picture)</a></div>
+
+		 	<div id="post-6226" class="post-6226 post type-post status-publish format-standard has-post-thumbnail hentry category-dp-display-picture wp-image-borders">
+		 	
+				<h1 class="entry-title">34+ Instagram WhatsApp DP Free Download</h1>  
+						<div class="entry-meta">
+<span class="meta-author">Published by <a href="https://www.newsshare.in/author/arshpreet" title="Posts by Arshpreet" rel="author">Arshpreet</a></span> . Apr 5th, 2020 &middot; <a href="https://www.newsshare.in/instagram-whatsapp-dp-6226.html#respond">0 Comment</a></div>  <!--end .entry-meta-->
+  <center><span style="font-size:0.7em">Advertisement</span><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Link ads responsive -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8822717667672157"
+     data-ad-slot="9511443968"
+     data-ad-format="link"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></center>
+	<div class="entry-content">
+				<p>Download free best collections of Instagram WhatsApp DP, profile picture, WhatsApp profile pic, images, photos available in high-quality resolutions which you can use this as your WhatsApp, Twitter, Instagram, Viber, Facebook profile pic. Click on the any of the below Instagram WhatsApp DP chosen image to download for free.</p>
+<h2>Download free Instagram WhatsApp DP Profile Pic</h2>
+
+		<style type="text/css">
+			#gallery-1 {
+				margin: auto;
+			}
+			#gallery-1 .gallery-item {
+				float: left;
+				margin-top: 10px;
+				text-align: center;
+				width: 33%;
+			}
+			#gallery-1 img {
+				border: 2px solid #cfcfcf;
+			}
+			#gallery-1 .gallery-caption {
+				margin-left: 0;
+			}
+			/* see gallery_shortcode() in wp-includes/media.php */
+		</style>
+		<div id='gallery-1' class='gallery galleryid-6226 gallery-columns-3 gallery-size-thumbnail'><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Instagram WhatsApp DP 26"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-26.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 26" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-26-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-26-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 26" /></noscript></a>
+			</dt></dl><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Instagram WhatsApp DP 27"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-27.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 27" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-27-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-27-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 27" /></noscript></a>
+			</dt></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Instagram WhatsApp DP 28"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-28.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 28" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-28-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-28-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 28" /></noscript></a>
+			</dt></dl><br style="clear: both" /><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Instagram WhatsApp DP 29"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-29.png'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 29" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-29-180x180.png" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-29-180x180.png" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 29" /></noscript></a>
+			</dt></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Instagram WhatsApp DP 30"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-30.png'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 30" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-30-180x180.png" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-30-180x180.png" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 30" /></noscript></a>
+			</dt></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Instagram WhatsApp DP 31"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-31.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 31" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-31-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-31-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 31" /></noscript></a>
+			</dt></dl><br style="clear: both" /><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Instagram WhatsApp DP 32"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-32.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 32" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-32-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-32-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 32" /></noscript></a>
+			</dt></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Instagram WhatsApp DP 33"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-33.png'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 33" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-33-180x180.png" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-33-180x180.png" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 33" /></noscript></a>
+			</dt></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Instagram WhatsApp DP 34"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-34.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 34" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-34-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-34-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 34" /></noscript></a>
+			</dt></dl><br style="clear: both" /><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Instagram WhatsApp DP 35"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-35.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 35" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-35-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-35-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 35" /></noscript></a>
+			</dt></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Instagram WhatsApp DP 1"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-1.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 1" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-1-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-1-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 1" /></noscript></a>
+			</dt></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Instagram WhatsApp DP 2"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-2.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 2" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-2-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-2-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 2" /></noscript></a>
+			</dt></dl><br style="clear: both" /><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Instagram WhatsApp DP 3"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-3.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 3" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-3-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-3-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 3" /></noscript></a>
+			</dt></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Instagram WhatsApp DP 4"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-4.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 4" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-4-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-4-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 4" /></noscript></a>
+			</dt></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Instagram WhatsApp DP 5"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-5.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 5" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-5-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-5-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 5" /></noscript></a>
+			</dt></dl><br style="clear: both" /><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Instagram WhatsApp DP 6"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-6.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 6" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-6-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-6-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 6" /></noscript></a>
+			</dt></dl><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Instagram WhatsApp DP 7"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-7.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 7" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-7-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-7-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 7" /></noscript></a>
+			</dt></dl><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Instagram WhatsApp DP 8"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-8.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 8" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-8-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-8-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 8" /></noscript></a>
+			</dt></dl><br style="clear: both" /><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Instagram WhatsApp DP 9"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-9.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 9" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-9-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-9-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 9" /></noscript></a>
+			</dt></dl><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Instagram WhatsApp DP 10"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-10.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 10" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-10-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-10-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 10" /></noscript></a>
+			</dt></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Instagram WhatsApp DP 11"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-11.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 11" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-11-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-11-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 11" /></noscript></a>
+			</dt></dl><br style="clear: both" /><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Instagram WhatsApp DP 12"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-12.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 12" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-12-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-12-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 12" /></noscript></a>
+			</dt></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Instagram WhatsApp DP 13"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-13.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 13" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-13-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-13-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 13" /></noscript></a>
+			</dt></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Instagram WhatsApp DP 14"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-14.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 14" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-14-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-14-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 14" /></noscript></a>
+			</dt></dl><br style="clear: both" /><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Instagram WhatsApp DP 15"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-15.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 15" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-15-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-15-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 15" /></noscript></a>
+			</dt></dl><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Instagram WhatsApp DP 16"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-16.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 16" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-16-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-16-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 16" /></noscript></a>
+			</dt></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Instagram WhatsApp DP 17"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-17.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 17" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-17-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-17-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 17" /></noscript></a>
+			</dt></dl><br style="clear: both" /><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Instagram WhatsApp DP 18"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-18.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 18" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-18-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-18-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 18" /></noscript></a>
+			</dt></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Instagram WhatsApp DP 19"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-19.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 19" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-19-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-19-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 19" /></noscript></a>
+			</dt></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Instagram WhatsApp DP 20"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-20.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 20" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-20-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-20-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 20" /></noscript></a>
+			</dt></dl><br style="clear: both" /><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Instagram WhatsApp DP 21"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-21.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 21" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-21-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-21-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 21" /></noscript></a>
+			</dt></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Instagram WhatsApp DP 22"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-22.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 22" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-22-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-22-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 22" /></noscript></a>
+			</dt></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Instagram WhatsApp DP 23"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-23.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 23" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-23-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-23-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 23" /></noscript></a>
+			</dt></dl><br style="clear: both" /><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Instagram WhatsApp DP 24"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-24.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 24" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-24-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-24-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 24" /></noscript></a>
+			</dt></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Instagram WhatsApp DP 25"  href='https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-25.jpg'><img width="180" height="180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 25" data-lazy-src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-25-180x180.jpg" /><noscript><img width="180" height="180" src="https://www.newsshare.in/wp-content/uploads/2/Instagram-WhatsApp-DP-25-180x180.jpg" class="attachment-thumbnail size-thumbnail" alt="Instagram WhatsApp DP 25" /></noscript></a>
+			</dt></dl>
+			<br style='clear: both' />
+		</div>
+
+
+<!-- Quick Adsense WordPress Plugin: http://quickadsense.com/ -->
+<div class="a9a39a6f885feb967a6bc28d308e96e0" data-index="2" style="float: none; margin:10px 0 10px 0; text-align:center;">
+<center><span style="font-size:0.7em">Advertisement</span><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Link ads responsive -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8822717667672157"
+     data-ad-slot="9511443968"
+     data-ad-format="link"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></center>
+</div>
+
+<div style="font-size: 0px; height: 0px; line-height: 0px; margin: 0; padding: 0; clear: both;"></div><!-- relpost-thumb-wrapper --><div class="relpost-thumb-wrapper"><!-- filter-class --><div class="relpost-thumb-container"><h3>Related News:</h3><div style="clear: both"></div><div style="clear: both"></div><!-- relpost-block-container --><div class="relpost-block-container"><a class="relpost-block-single" href="https://www.newsshare.in/anime-whatsapp-dp-boys-6788.html"><div class="relpost-custom-block-single" style="width: 180px; height: 250px;"><div class="relpost-block-single-image" alt="Anime WhatsApp DP for Boys 15"  style="background: transparent url(https://www.newsshare.in/wp-content/uploads/2/Anime-WhatsApp-DP-for-Boys-15-180x180.jpg) no-repeat scroll 0% 0%; width: 180px; height: 180px;"></div><div class="relpost-block-single-text"  style="font-family: Arial;  font-size: 16px;  color: #333333;">22+ Anime WhatsApp DP for Boys Free Download</div></div></a><a class="relpost-block-single" href="https://www.newsshare.in/cartoon-whatsapp-dp-6794.html"><div class="relpost-custom-block-single" style="width: 180px; height: 250px;"><div class="relpost-block-single-image" alt="Cartoon WhatsApp DP 41"  style="background: transparent url(https://www.newsshare.in/wp-content/uploads/2/Cartoon-WhatsApp-DP-41-180x180.jpg) no-repeat scroll 0% 0%; width: 180px; height: 180px;"></div><div class="relpost-block-single-text"  style="font-family: Arial;  font-size: 16px;  color: #333333;">43+ Cartoon WhatsApp DP Free Download</div></div></a><a class="relpost-block-single" href="https://www.newsshare.in/cartoon-couple-whatsapp-dp-6793.html"><div class="relpost-custom-block-single" style="width: 180px; height: 250px;"><div class="relpost-block-single-image" alt="Cartoon Couple WhatsApp DP 18"  style="background: transparent url(https://www.newsshare.in/wp-content/uploads/2/Cartoon-Couple-WhatsApp-DP-18-180x180.jpg) no-repeat scroll 0% 0%; width: 180px; height: 180px;"></div><div class="relpost-block-single-text"  style="font-family: Arial;  font-size: 16px;  color: #333333;">23+ Cartoon Couple WhatsApp DP Free Download</div></div></a><a class="relpost-block-single" href="https://www.newsshare.in/tension-whatsapp-dp-7620.html"><div class="relpost-custom-block-single" style="width: 180px; height: 250px;"><div class="relpost-block-single-image" alt="Tension WhatsApp DP 18"  style="background: transparent url(https://www.newsshare.in/wp-content/uploads/3/Tension-WhatsApp-DP-18-180x180.jpg) no-repeat scroll 0% 0%; width: 180px; height: 180px;"></div><div class="relpost-block-single-text"  style="font-family: Arial;  font-size: 16px;  color: #333333;">17+ Tension WhatsApp DP Free Download</div></div></a><a class="relpost-block-single" href="https://www.newsshare.in/cute-couple-whatsapp-dp-6796.html"><div class="relpost-custom-block-single" style="width: 180px; height: 250px;"><div class="relpost-block-single-image" alt="Cute Couple WhatsApp DP (25)"  style="background: transparent url(https://www.newsshare.in/wp-content/uploads/2/Cute-Couple-WhatsApp-DP-25-180x180.jpg) no-repeat scroll 0% 0%; width: 180px; height: 180px;"></div><div class="relpost-block-single-text"  style="font-family: Arial;  font-size: 16px;  color: #333333;">33+ Cute Couple WhatsApp DP Free Download</div></div></a><a class="relpost-block-single" href="https://www.newsshare.in/cute-cat-whatsapp-dp-7872.html"><div class="relpost-custom-block-single" style="width: 180px; height: 250px;"><div class="relpost-block-single-image" alt="Cute Cat WhatsApp DP 31"  style="background: transparent url(https://www.newsshare.in/wp-content/uploads/4/Cute-Cat-WhatsApp-DP-31-180x180.jpg) no-repeat scroll 0% 0%; width: 180px; height: 180px;"></div><div class="relpost-block-single-text"  style="font-family: Arial;  font-size: 16px;  color: #333333;">37+ Cute Cat WhatsApp DP Free Download</div></div></a></div><!-- close relpost-block-container --><div style="clear: both"></div></div><!-- close filter class --></div><!-- close relpost-thumb-wrapper -->		
+				  		<div class="clear"></div>
+
+	</div><!--end .entry-->
+
+				
+
+
+
+						
+</div><!-- #post-6226 -->
+		
+			  		
+<!-- BEGIN #comments -->
+<div id="comments">
+
+			<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/instagram-whatsapp-dp-6226.html#respond" style="display:none;">Cancel Reply</a></small></h3><form action="https://www.newsshare.in/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" maxlength="100" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="text" value="" size="30" maxlength="200" /></p>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Submit Comment" /> <input type='hidden' name='comment_post_ID' value='6226' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><input type="hidden" name="8a8a38dec7c9a5a4bb6c7e5da41fa960" value="8a8a38dec7c9a5a4bb6c7e5da41fa960"/><p id="gasp_p" style="clear:both;"></p><script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+        //v1.5.1
+        var gasp_p = document.getElementById("gasp_p");
+        var gasp_cb = document.createElement("input");
+        var gasp_text = document.createTextNode(" Confirm you are NOT a spammer");
+        gasp_cb.type = "checkbox";
+        gasp_cb.id = "cl_check_a9a";
+        gasp_cb.name = "cl_check_a9a";
+
+        var gasp_label = document.createElement("label");
+        gasp_p.appendChild(gasp_label);
+        gasp_label.appendChild(gasp_cb);
+        gasp_label.appendChild(gasp_text);
+        var frm = gasp_cb.form;
+        frm.onsubmit = gasp_it;
+        function gasp_it(){
+        if(gasp_cb.checked != true){
+        alert("Please check the box to confirm that you are NOT a spammer");
+        return false;
+        }
+        return true;
+        }
+        </script>
+        <noscript>you MUST enable javascript to be able to comment</noscript>
+        <input type="hidden" id="gasp_email" name="gasp_email" value="" /><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="bb328e5788" /></p><p style="display: none !important;"><label>&#916;<textarea name="ak_hp_textarea" cols="45" rows="8" maxlength="100"></textarea></label><input type="hidden" id="ak_js" name="ak_js" value="83"/><script type="rocketlazyloadscript">document.getElementById( "ak_js" ).setAttribute( "value", ( new Date() ).getTime() );</script></p></form>	</div><!-- #respond -->
+	
+		
+<!-- #comments -->
+</div> 	
+	  		
+	  
+</div><!--end #content-->
+
+<div id="sidebar">
+				<div id="wp_subscribe-2" class="widget wp_subscribe">	
+		<div id="wp-subscribe" class="wp-subscribe-wrap wp-subscribe wp-subscribe-1" data-thanks_page="0" data-thanks_page_url="" data-thanks_page_new_window="0">
+
+			<h4 class="title">Get more stuff</h4>
+
+			<p class="text">Subscribe to our mailing list and get interesting stuff and updates to your email inbox.</p>
+
+			
+		<form action="https://feedburner.google.com/fb/a/mailverify?uri=NewsShare09" method="post" class="wp-subscribe-form wp-subscribe-feedburner" id="wp-subscribe-form-1" target="popupwindow">
+
+			<input class="regular-text email-field" type="email" name="email" placeholder="Enter your email here" required>
+
+			<input type="hidden" name="uri" value="NewsShare09">
+
+			<input type="hidden" name="loc" value="en_US">
+
+			<input type="hidden" name="form_type" value="widget">
+
+			<input type="hidden" name="service" value="feedburner">
+
+			<input type="hidden" name="widget" value="wp_subscribe-2">
+							<div class="wps-consent-wrapper">
+					<label for="consent-field">
+						<input class="consent-field" id="consent-field" type="checkbox" name="consent" required />
+						I agree to receive latest update from News Share*					</label>
+				</div>
+						<input class="submit" type="submit" name="submit" value="Sign Up Now">
+
+		</form>
+
+		
+			<div class="wp-subscribe-loader">
+				<svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+					<path fill="#ffffff" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
+						<animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"/>
+					</path>
+				</svg>
+			</div>
+
+			<p class="thanks">Thank you for subscribing.</p>
+			<p class="error">Something went wrong.</p>
+			<div class="clear"></div>
+
+			<p class="footer-text">we respect your privacy and take protecting it seriously</p>
+
+		</div>
+
+			</div>	
+<h3 class="widget-title">Follow us</h3>
+
+		
+	<div class="metro-social metro-height-extend" style="width:px;">
+
+		<li><a class="metro-facebook" style="background-color:#1f69b3;" target="_blank" href="https://www.facebook.com/newssharein"></a></li>
+
+	        <li><a class="twitter-one" style="background-color:#43b3e5;" target="_blank" href="https://www.twitter.com/newssharein"></a></li>
+
+ 	        <li><a class="metro-rss" style="background-color:#e9a01c;" target="_blank" href="https://www.newsshare.in/feed"></a></li>
+
+	</div>
+	
+        <div id="custom_html-3" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><center><span style="font-size:0.7em">Advertisements</span><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Link ads responsive -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8822717667672157"
+     data-ad-slot="9511443968"
+     data-ad-format="link"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></center></div></div></div><!-- #sidebar -->
+
+	</div><!-- #main -->
+
+	<div class="clear"></div>
+
+	<div class="copyright">
+		&copy; 2021 <a href="https://www.newsshare.in" title="" rel="home">News Share</a>. All rights reserved.
+		<p><a href="/">Home</a> | <a href="/about">About</a> | <a href="/contact">Contact</a> | <a href="/sitemapindex.xml">Sitemap</a></p>
+	</div><!-- .copyright -->
+
+	<div class="clear"></div>
+
+</div><!-- #wrapper -->
+
+<a id="back-to-top" href="#"></a>
+
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript">var jQueryScriptOutputted = false;function initJQuery() {if (typeof(jQuery) == "undefined") {if (!jQueryScriptOutputted) {jQueryScriptOutputted = true;document.write("<scr" + "ipt type=\"text/javascript\" src=\"https://code.jquery.com/jquery-1.8.2.min.js\"></scr" + "ipt>");}setTimeout("initJQuery()", 50);}}initJQuery();</script><script type="rocketlazyloadscript" data-rocket-type="text/javascript">jQuery(document).ready(function() {
+jQuery(".a9a39a6f885feb967a6bc28d308e96e0").click(function() {
+jQuery.post(
+"https://www.newsshare.in/wp-admin/admin-ajax.php", {
+"action": "quick_adsense_onpost_ad_click",
+"quick_adsense_onpost_ad_index": jQuery(this).attr("data-index"),
+"quick_adsense_nonce": "53cd50041f",
+}, function(response) { }
+);
+});
+});
+</script><link data-minify="1" rel='stylesheet' id='wp-subscribe-css'  href='https://www.newsshare.in/wp-content/cache/min/1/wp-content/plugins/wp-subscribe/assets/css/wp-subscribe-form.css?ver=1639289782' type='text/css' media='all' />
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' id='rocket-browser-checker-js-after'>
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script type='text/javascript' id='rocket-preload-links-js-extra'>
+/* <![CDATA[ */
+var RocketPreloadLinksConfig = {"excludeUris":"\/(.+\/)?feed\/?.+\/?|\/(?:.+\/)?embed\/|\/(index\\.php\/)?wp\\-json(\/.*|$)|\/wp-admin|\/logout|\/wp-login.php","usesTrailingSlash":"","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|php|pdf|html|htm","siteUrl":"https:\/\/www.newsshare.in","onHoverDelay":"100","rateThrottle":"3"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' id='rocket-preload-links-js-after'>
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+</script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.newsshare.in/wp-includes/js/comment-reply.min.js?ver=dddc28231cb7c1f3005c74e44fe7e7f0' id='comment-reply-js'></script>
+<script type='text/javascript' id='wp-subscribe-js-extra'>
+/* <![CDATA[ */
+var wp_subscribe = {"ajaxurl":"https:\/\/www.newsshare.in\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type='text/javascript' src='https://www.newsshare.in/wp-content/cache/min/1/wp-content/plugins/wp-subscribe/assets/js/wp-subscribe-form.js?ver=1639289782' id='wp-subscribe-js'></script>
+<script>window.lazyLoadOptions={elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}};window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://www.newsshare.in/wp-content/plugins/wp-rocket/assets/js/lazyload/16.1/lazyload.min.js"></script>
+</body>
+</html>
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1639994358 -->
